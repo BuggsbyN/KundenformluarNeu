@@ -129,8 +129,8 @@ def init_google_sheet():
     return service, spreadsheet_id
 
 
-        # Header definieren
-        header = ["Name", "Alter", "Geschlecht", "Trainingsziel", "Motivation", "Trainingserfahrung",
+# Header definieren
+    header = ["Name", "Alter", "Geschlecht", "Trainingsziel", "Motivation", "Trainingserfahrung",
                   "Sportarten", "Verletzungen", "Beruf", "Schlaf", "Ernährung", "Ziele",
                   "Trainingstage/Woche", "Erwartung an Trainer", "Fitnessstudio-Zugang", "Heim-Equipment"]
 
