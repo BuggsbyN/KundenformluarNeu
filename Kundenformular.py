@@ -100,7 +100,7 @@ if st.button("Kundenprofil speichern"):
 
     def init_google_sheet():
         # Credentials & Service einrichten
-        SCOPES = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+        scopes = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
         creds = Credentials.from_service_account_file("service_account.json", scopes=SCOPES)
         service = build('sheets', 'v4', credentials=creds)
 
@@ -184,10 +184,10 @@ if st.button("Kundenprofil speichern"):
     # Beispiel Nutzung in deinem Code:
 
     # Google Sheets Upload vorbereiten
-    scope = ["https://www.googleapis.com/auth/spreadsheets"]
-    creds = ServiceAccountCredentials.from_json_keyfile_name("service_account.json", scope)
+    scopes = ["https://www.googleapis.com/auth/spreadsheets"]
+    creds =  Credentials.from_service_account_file("service_account.json", scope)
     client = gspread.authorize(creds)
-    sheet = client.open_by_key("1PDMFFM_S5k4lKzpsf6lk0AjqTwC2623TpC703jGHXOM").sheet1
+    sheet = client.open_by_key("1Kj97Lq4DKMKDUIZK-W9wLUxFPfMsMMhoMBDTvBbfJJY").sheet1
 
     # Einmalig die Tabelle initialisieren (nur einmal vor dem ersten Schreiben)
     init_google_sheet()
