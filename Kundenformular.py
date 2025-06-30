@@ -1,12 +1,13 @@
 import streamlit as st
 
-#Kundendaten speichern, abrufen , bearbeiten und löschen
+#Kundendaten speichern, abrufen, bearbeiten und löschen
 
 import pandas as pd
 import os
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
 
+import sys
+print("Python executable:", sys.executable)
+print("Python sys.path:", sys.path)
 
 st.title('Fitness-Onboarding')
 #Persöhnliche Fragen
@@ -99,11 +100,11 @@ if st.button("Kundenprofil speichern"):
 
     def init_google_sheet():
         # Credentials & Service einrichten
-        SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
+        SCOPES = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
         creds = Credentials.from_service_account_file("service_account.json", scopes=SCOPES)
         service = build('sheets', 'v4', credentials=creds)
 
-        spreadsheet_id = "1PDMFFM_S5k4lKzpsf6lk0AjqTwC2623TpC703jGHXOM"
+        spreadsheet_id = "1Kj97Lq4DKMKDUIZK-W9wLUxFPfMsMMhoMBDTvBbfJJY"
 
         # Header definieren
         header = ["Name", "Alter", "Geschlecht", "Trainingsziel", "Motivation", "Trainingserfahrung",
@@ -183,7 +184,7 @@ if st.button("Kundenprofil speichern"):
     # Beispiel Nutzung in deinem Code:
 
     # Google Sheets Upload vorbereiten
-    scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+    scope = ["https://www.googleapis.com/auth/spreadsheets"]
     creds = ServiceAccountCredentials.from_json_keyfile_name("service_account.json", scope)
     client = gspread.authorize(creds)
     sheet = client.open_by_key("1PDMFFM_S5k4lKzpsf6lk0AjqTwC2623TpC703jGHXOM").sheet1
@@ -198,11 +199,11 @@ if st.button("Kundenprofil speichern"):
 from fpdf import FPDF
 import re
 def erstelle_pdf(Kundendaten):
-    pdf = FPDF() #erstellen der neuen PDF
+    pdf = FPDF() #erstellen der PDF
     pdf.add_page() #Seite hinzufügen
     pdf.set_font("Arial", size=10) #Schriftart und die Größe
 
-    pdf.cell(200,10,txt=Kundendaten, ln=True, align="C") # erstellt die Seite in der gewünschten breite,höhe und zentriert
+    pdf.cell(200,10,txt=Kundendaten, ln=True, align="C") # erstellt die Seite in der gewünschten breite, höhe und zentriert
     pdf.ln(10) # fügt einen Zeilenumbruch hinzu und sorgt für abstand
 
 
