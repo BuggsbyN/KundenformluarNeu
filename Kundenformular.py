@@ -183,7 +183,7 @@ if st.button("Kundenprofil speichern"):
     # Beispiel Nutzung in deinem Code:
 
     # Google Sheets Upload vorbereiten
-    scopes = ["https://www.googleapis.com/auth/spreadsheets"]
+    SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
     creds =  Credentials.from_service_account_file("service_account.json",scopes=SCOPES)
     client = gspread.authorize(creds)
     sheet = client.open_by_key("1Kj97Lq4DKMKDUIZK-W9wLUxFPfMsMMhoMBDTvBbfJJY").sheet1
