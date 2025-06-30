@@ -100,6 +100,25 @@ if st.button("Kundenprofil speichern"):
     import streamlit as st
     import json
 
+# Pfad zu deiner service_account.json
+json_path = "service_account.json"
+
+# JSON laden
+with open(json_path, "r") as f:
+    data = json.load(f)
+
+# private_key Zeilenumbrüche als \n kodieren
+if "private_key" in data:
+    data["private_key"] = data["private_key"].replace("\n", "\\n")
+
+# JSON wieder in einen String umwandeln
+json_str = json.dumps(data, indent=2)
+
+# Ausgabe als TOML-ready String mit dreifachen einfachen Anführungszeichen
+toml_str = f"[google]\nservice_account_json = '''{json_str}'''"
+
+print(toml_str)
+
 
     def init_google_sheet():
         service_account_info = json.loads(st.secrets["google"]["service_account_json"])
