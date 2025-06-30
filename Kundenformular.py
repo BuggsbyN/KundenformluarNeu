@@ -93,7 +93,6 @@ if st.button("Kundenprofil speichern"):
 
     from google.oauth2.service_account import Credentials
     from googleapiclient.discovery import build
-    from oauth2client.service_account import ServiceAccountCredentials
     import gspread
     import streamlit as st
 
@@ -101,7 +100,7 @@ if st.button("Kundenprofil speichern"):
     def init_google_sheet():
         # Credentials & Service einrichten
         scopes = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-        creds = Credentials.from_service_account_file("service_account.json", scopes=SCOPES)
+        creds = Credentials.from_service_account_file("service_account.json", scopes=scopes)
         service = build('sheets', 'v4', credentials=creds)
 
         spreadsheet_id = "1Kj97Lq4DKMKDUIZK-W9wLUxFPfMsMMhoMBDTvBbfJJY"
@@ -185,7 +184,7 @@ if st.button("Kundenprofil speichern"):
 
     # Google Sheets Upload vorbereiten
     scopes = ["https://www.googleapis.com/auth/spreadsheets"]
-    creds =  Credentials.from_service_account_file("service_account.json", scope)
+    creds =  Credentials.from_service_account_file("service_account.json", scopes)
     client = gspread.authorize(creds)
     sheet = client.open_by_key("1Kj97Lq4DKMKDUIZK-W9wLUxFPfMsMMhoMBDTvBbfJJY").sheet1
 
