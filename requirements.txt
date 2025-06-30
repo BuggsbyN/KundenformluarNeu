@@ -4,3 +4,5 @@ oauth2client
 fpdf
 pandas
 google-auth
+google-auth-oauthlib
+google-auth-httplib2
