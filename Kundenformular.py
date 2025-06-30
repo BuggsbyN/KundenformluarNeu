@@ -119,8 +119,7 @@ toml_str = f"[google]\nservice_account_json = '''{json_str}'''"
 
 print(toml_str)
 
-
-    def init_google_sheet():
+def init_google_sheet():
         service_account_info = json.loads(st.secrets["google"]["service_account_json"])
         SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
         creds = Credentials.from_service_account_info(service_account_info, scopes=SCOPES)
