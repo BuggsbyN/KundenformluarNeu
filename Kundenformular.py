@@ -99,8 +99,8 @@ if st.button("Kundenprofil speichern"):
 
     def init_google_sheet():
         # Credentials & Service einrichten
-        scopes = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-        creds = Credentials.from_service_account_file("service_account.json", scopes=scopes)
+        SCOPES = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+        creds = Credentials.from_service_account_file("service_account.json", scopes=SCOPES)
         service = build('sheets', 'v4', credentials=creds)
 
         spreadsheet_id = "1Kj97Lq4DKMKDUIZK-W9wLUxFPfMsMMhoMBDTvBbfJJY"
