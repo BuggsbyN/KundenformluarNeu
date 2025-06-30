@@ -98,6 +98,7 @@ if st.button("Kundenprofil speichern"):
     from googleapiclient.discovery import build
     import gspread
     import streamlit as st
+    import json
 
 
     def init_google_sheet():
