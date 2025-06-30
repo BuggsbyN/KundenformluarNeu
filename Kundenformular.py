@@ -99,7 +99,7 @@ if st.button("Kundenprofil speichern"):
 
     def init_google_sheet():
         # Credentials & Service einrichten
-        SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
+        SCOPES = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
         creds = Credentials.from_service_account_file("service_account.json", scopes=SCOPES)
         service = build('sheets', 'v4', credentials=creds)
 
@@ -184,7 +184,7 @@ if st.button("Kundenprofil speichern"):
 
     # Google Sheets Upload vorbereiten
     SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
-    creds = Credentials.from_service_account_file("service_account.json", scopes= SCOPES)
+    creds =  Credentials.from_service_account_file("service_account.json",scopes=SCOPES)
     client = gspread.authorize(creds)
     sheet = client.open_by_key("1Kj97Lq4DKMKDUIZK-W9wLUxFPfMsMMhoMBDTvBbfJJY").sheet1
 
@@ -207,7 +207,7 @@ def erstelle_pdf(Kundendaten):
 
 
     for key, value in Kundendaten.items(): #schleife für das dictionary fügt zb key= name mit dem Wert=Max zsm.
-        pdf.cell(200, 10, txt=f"{key}:{value}", ln=True, align="C")
+        pdf.cell(200, 10, txt=f"{key}: {value}", ln=True, align="C")
 
     # Kundennamen für den Dateinamen verwenden
     name = Kundendaten.get("name", "Unbekannt")
