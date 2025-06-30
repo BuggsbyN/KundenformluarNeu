@@ -127,8 +127,6 @@ def init_google_sheet():
 
     spreadsheet_id = "1Kj97Lq4DKMKDUIZK-W9wLUxFPfMsMMhoMBDTvBbfJJY"
     return service, spreadsheet_id
-        spreadsheet_id = "1Kj97Lq4DKMKDUIZK-W9wLUxFPfMsMMhoMBDTvBbfJJY"
-        return service, spreadsheet_id
 
 
         # Header definieren
