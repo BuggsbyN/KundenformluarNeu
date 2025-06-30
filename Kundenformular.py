@@ -6,6 +6,9 @@ import pandas as pd
 import os
 
 import sys
+
+from gspread import service_account
+
 print("Python executable:", sys.executable)
 print("Python sys.path:", sys.path)
 
@@ -98,9 +101,9 @@ if st.button("Kundenprofil speichern"):
 
 
     def init_google_sheet():
-        # Credentials & Service einrichten
+        service_account_info = json.loads(st.secrets["google"]["service_account_json"])
         SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
-        creds = Credentials.from_service_account_file("service_account.json", scopes=SCOPES)
+        creds = Credentials.from_service_account_info(service_account_info, scopes=SCOPES)
         service = build('sheets', 'v4', credentials=creds)
 
         spreadsheet_id = "1Kj97Lq4DKMKDUIZK-W9wLUxFPfMsMMhoMBDTvBbfJJY"
@@ -186,6 +189,7 @@ if st.button("Kundenprofil speichern"):
 
     # Google Sheets Upload vorbereiten
     SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
+    service_account_info = json.loads(st.secrets["google"]["service_account_json"])
     creds = Credentials.from_service_account_file("service_account.json", scopes=SCOPES)
     client = gspread.authorize(creds)
     sheet = client.open_by_key("1Kj97Lq4DKMKDUIZK-W9wLUxFPfMsMMhoMBDTvBbfJJY").sheet1
